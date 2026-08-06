@@ -1,0 +1,38 @@
+<!--
+Copyright (C) 2026 ZylxEmu Emulator Project
+SPDX-License-Identifier: GPL-2.0-or-later
+Application composition root. Shared resources and styles are included in
+cascade order so individual launcher views do not redefine global visuals.
+-->
+
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ZylxEmu.GUI.App"
+             RequestedThemeVariant="Dark">
+
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://ZylxEmu.GUI/Themes/Tokens.axaml" />
+        <ResourceInclude Source="avares://ZylxEmu.GUI/Themes/Templates/SettingRow.axaml" />
+        <ResourceInclude Source="avares://ZylxEmu.GUI/Themes/Templates/OptionsControls.axaml" />
+        <ResourceInclude Source="avares://ZylxEmu.GUI/Themes/Templates/SplitNumericUpDown.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+
+  <Application.Styles>
+    <FluentTheme />
+
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Base.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Surfaces.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Buttons.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Chrome.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Inputs.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Console.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Library.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/OptionsNav.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/Options.axaml" />
+    <StyleInclude Source="avares://ZylxEmu.GUI/Themes/Styles/GameOptions.axaml" />
+  </Application.Styles>
+</Application>
