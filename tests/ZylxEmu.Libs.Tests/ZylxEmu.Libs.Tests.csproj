@@ -1,0 +1,25 @@
+<!--
+Copyright (C) 2026 ZylxEmu Emulator Project
+SPDX-License-Identifier: GPL-2.0-or-later
+-->
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\ZylxEmu.Core\ZylxEmu.Core.csproj" />
+    <ProjectReference Include="..\..\src\ZylxEmu.Libs\ZylxEmu.Libs.csproj" />
+    <ProjectReference Include="..\..\src\ZylxEmu.HLE\ZylxEmu.HLE.csproj" />
+    <ProjectReference Include="..\..\src\ZylxEmu.GUI\ZylxEmu.GUI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+  </ItemGroup>
+</Project>

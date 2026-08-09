@@ -1,0 +1,28 @@
+<!--
+Copyright (C) 2026 ZylxEmu Emulator Project
+SPDX-License-Identifier: GPL-2.0-or-later
+-->
+
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ZylxEmu.LibAtrac9/ZylxEmu.LibAtrac9.csproj" />
+    <Project Path="src/ZylxEmu.CLI/ZylxEmu.CLI.csproj" />
+    <Project Path="src/ZylxEmu.Core/ZylxEmu.Core.csproj" />
+    <Project Path="src/ZylxEmu.DebugClient/ZylxEmu.DebugClient.csproj" />
+    <Project Path="src/ZylxEmu.Debugger/ZylxEmu.Debugger.csproj" />
+    <Project Path="src/ZylxEmu.GUI/ZylxEmu.GUI.csproj" />
+    <Project Path="src/ZylxEmu.HLE/ZylxEmu.HLE.csproj" />
+    <Project Path="src/ZylxEmu.Libs/ZylxEmu.Libs.csproj" />
+    <Project Path="src/ZylxEmu.Logging/ZylxEmu.Logging.csproj" />
+    <Project Path="src/ZylxEmu.ShaderCompiler/ZylxEmu.ShaderCompiler.csproj" />
+    <Project Path="src/ZylxEmu.ShaderCompiler.Metal/ZylxEmu.ShaderCompiler.Metal.csproj" />
+    <Project Path="src/ZylxEmu.ShaderCompiler.Vulkan/ZylxEmu.ShaderCompiler.Vulkan.csproj" />
+    <Project Path="src/ZylxEmu.SourceGenerators/ZylxEmu.SourceGenerators.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/ZylxEmu.Libs.Tests/ZylxEmu.Libs.Tests.csproj" />
+    <Project Path="tests/ZylxEmu.ShaderCompiler.Metal.Tests/ZylxEmu.ShaderCompiler.Metal.Tests.csproj" />
+    <Project Path="tests/ZylxEmu.ShaderCompiler.Tests/ZylxEmu.ShaderCompiler.Tests.csproj" />
+    <Project Path="tests/ZylxEmu.SourceGenerators.Tests/ZylxEmu.SourceGenerators.Tests.csproj" />
+  </Folder>
+</Solution>

@@ -1,0 +1,32 @@
+version = 1
+
+[[annotations]]
+path = [
+    "REUSE.toml",
+    "nuget.config",
+    "global.json",
+    "**/packages.lock.json",
+    "scripts/ps5_names.txt",
+    "src/ZylxEmu.GUI/Languages/**",
+    "src/ZylxEmu.ShaderCompiler.Metal/Templates/**",
+    "tests/ZylxEmu.ShaderCompiler.Metal.Tests/Goldens/**",
+    "_logs/**",
+    ".github/images/**",
+    ".github/pull_request_template.md",
+    "assets/images/**"
+]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "ZylxEmu Emulator Project"
+SPDX-License-Identifier = "GPL-2.0-or-later"
+
+[[annotations]]
+path = "src/ZylxEmu.GUI/Assets/Fonts/MaterialSymbolsRounded-*.ttf"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 Google LLC"
+SPDX-License-Identifier = "Apache-2.0"
+
+[[annotations]]
+path = "src/ZylxEmu.LibAtrac9/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2018 Alex Barney"
+SPDX-License-Identifier = "MIT"
