@@ -1,0 +1,61 @@
+Porting status and plan
+
+Summary:
+- I scanned both repositories (sharpemu/sharpemu and zenunqq/zylxemu).
+- ZylxEmu already contains a one-to-one port for the vast majority of SharpEmu source files (projects, directories, and tests are present and renamed to ZylxEmu.*).
+- Because most files are already present, the remaining work is focused on ensuring parity (content-level differences), fixing runtime bugs, improving diagnostics, and adding any missing generated outputs or native dependency integration.
+
+Files/subsystems prioritized for parity or fixes:
+1) Core & Loader
+   - src/*/Loader/SelfLoader.cs
+   - src/*/Loader/SelfImage.cs
+   - src/*/Loader/ProgramHeader.cs
+   - src/*/Loader/ElfHeader.cs
+2) Virtual Memory
+   - src/*/Memory/VirtualMemory.cs
+   - src/*/Memory/PhysicalVirtualMemory.cs
+   - src/*/Memory/VirtualMemoryRegion.cs
+3) HLE & Libs
+   - src/*/Libs/PlayGo/PlayGoExports.cs
+   - src/*/Libs/Json/JsonValueExports.cs
+   - src/*/Libs/Kernel/KernelMemoryCompatExports.cs
+   - various kernel compatibility shims and missing-syscalls stubs
+4) Shader compiler
+   - src/*/ShaderCompiler/Gen5*Translator.* (Metal & Vulkan translators)
+   - templates under ShaderCompiler.Metal/Templates
+5) Media & native wrappers
+   - src/*/Libs/Media/FfmpegMediaStream.cs
+   - src/*/Libs/Media/FfmpegRuntime.cs
+6) Source generators & build
+   - src/*/SourceGenerators (ensure generators run or port generated outputs)
+
+What I already added on branch zylxemu/import-sharpemu-core:
+- src/ZylxEmu.Core/Diagnostics/RuntimeDiagnostics.cs — a lightweight diagnostic helper to surface trace-level logs for loader, VM, HLE, shader, and media.
+  - This is safe to include and helps collect better runtime traces without touching core logic immediately.
+
+Next actions I will take (iterate in small commits)
+A) Generate a content diff for the prioritized files and identify exact files that differ or are missing. I will add a DIFF report file under src/PORTING/DIFF_SHARPEMU_TO_ZYLX.txt with exact missing/different files.
+B) For each differing/missing file in priority order, I will:
+   1. Copy the authoritative SharpEmu implementation.
+   2. Rename namespaces from SharpEmu.* → ZylxEmu.* where appropriate.
+   3. Update csproj references and usings so the project builds.
+   4. Preserve original GPL-2.0-or-later headers in ported files.
+   5. Add small, focused unit tests where reasonable.
+   6. Run dotnet build and targeted tests to ensure compile-time correctness.
+C) Push each logical change as its own commit to zylxemu/import-sharpemu-core and open a draft PR once the first batch (Core/Loader/Memory/HLE) is ready.
+
+Notes & blockers you should be aware of
+- Many runtime problems are caused by behavioral differences, not missing files. Copying files may not fix bugs if the emulator depends on platform-native binaries (FFmpeg, Vulkan/Metal drivers, MoltenVK on macOS) or generated code from source generators.
+- Source generators must run during build to produce some code; if CI/build environments strip generator outputs you may need the generated files checked-in or adjust the build.
+- Large portions of the codebase rely on native interop and platform-specific behavior — I will document these and add guidance for installing native dependencies.
+
+What I need from you to accelerate fix-and-verify
+- If you have a failing game/title: attach the eboot.bin (or give TitleId) and the exact emulator command you use. Attach any logs (console + user/logs) if available.
+- Tell me if you want me to port files verbatim (keeping original names where possible) or to aggressively refactor/rename. I default to renaming to ZylxEmu.*.
+
+If you want me to continue, I will now:
+1) Create the detailed DIFF file listing exact missing/different files.
+2) Port the top-priority files (Loader, VirtualMemory, Kernel/PlayGo/Json) into your branch with small commits.
+3) Run dotnet build and report errors, then fix them incrementally.
+
+Proceeding now with step 1 (produce the DIFF file and start porting the highest-priority files).
